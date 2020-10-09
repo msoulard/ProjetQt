@@ -1,0 +1,12 @@
+digraph "Barre"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="{Barre\n|# reference\l# longueur\l# densite\l# nom\l|+ Barre()\l+ ~Barre()\l+ AfficherCaracteristiques()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node1 [label="{BarreCarree\n|- cote\l|+ BarreCarree()\l+ ~BarreCarree()\l+ CalculerSection()\l+ CalculerMasse()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_barre_carree.html"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{BarreRectangle\n|- hauteur\l- largeur\l|+ BarreRectangle()\l+ ~BarreRectangle()\l+ CalculerSection()\l+ CalculerMasse()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_barre_rectangle.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{BarreRonde\n|- diametre\l|+ BarreRonde()\l+ ~BarreRonde()\l+ CalculerSection()\l+ CalculerMasse()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_barre_ronde.html"];
+}
