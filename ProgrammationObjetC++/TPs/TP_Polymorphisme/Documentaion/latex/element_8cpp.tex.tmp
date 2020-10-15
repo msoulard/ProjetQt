@@ -1,0 +1,14 @@
+\hypertarget{element_8cpp}{}\section{/home/\+U\+S\+E\+R\+S/\+E\+L\+E\+V\+E\+S/\+S\+N\+I\+R2019/msoulard/\+Projet\+Qt/\+Programmation\+Objet\+C++/\+T\+Ps/\+T\+P\+\_\+\+Polymorphisme/\+Chariot\+\_\+\+Mobile/element.cpp File Reference}
+\label{element_8cpp}\index{/home/\+U\+S\+E\+R\+S/\+E\+L\+E\+V\+E\+S/\+S\+N\+I\+R2019/msoulard/\+Projet\+Qt/\+Programmation\+Objet\+C++/\+T\+Ps/\+T\+P\+\_\+\+Polymorphisme/\+Chariot\+\_\+\+Mobile/element.\+cpp@{/home/\+U\+S\+E\+R\+S/\+E\+L\+E\+V\+E\+S/\+S\+N\+I\+R2019/msoulard/\+Projet\+Qt/\+Programmation\+Objet\+C++/\+T\+Ps/\+T\+P\+\_\+\+Polymorphisme/\+Chariot\+\_\+\+Mobile/element.\+cpp}}
+{\ttfamily \#include \char`\"{}element.\+h\char`\"{}}\newline
+Include dependency graph for element.\+cpp\+:
+% FIG 0
+
+
+\subsection{Detailed Description}
+Définition et déclaration des fonctions de la classe \hyperlink{class_element}{Element} \begin{DoxyAuthor}{Author}
+Maëva Soulard 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+15/10/2020 
+\end{DoxyDate}
