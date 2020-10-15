@@ -18,3 +18,23 @@ Trajectoire::Trajectoire(const int _nbEtapesMax) :
 {
     parcours = new Element* [nbEtapesMax];
 }
+
+/**
+ * @file trajectoire.cpp
+ * @brief Trajectoire::~Trajectoire
+ * @details Destructeur de la classe Tajectoire
+ */
+Trajectoire::~Trajectoire()
+{
+    delete [] parcours;
+}
+
+/**
+ * @file trajectoire.cpp
+ * @brief Trajectoire::Afficher
+ * @details Fonction qui permet d'afficher les caractéristiques de la trajectoire
+ */
+void Trajectoire::Afficher()
+{
+    cout << "Trajectoire :" << endl << endl;
+}

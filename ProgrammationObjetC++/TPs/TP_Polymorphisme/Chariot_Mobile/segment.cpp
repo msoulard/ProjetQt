@@ -18,5 +18,15 @@ Segment::Segment(const double _longueur, const double _angle) :
     longueur(_longueur),
     angle(_angle)
 {
+    
+}
 
+/**
+ * @file segment.cpp
+ * @brief Segment::Afficher
+ * @details Fonction qui permet d'afficher 
+ */
+void Segment::Afficher()
+{
+    cout << "SEGMENT L = " << longueur << "  A = " << angle << endl;
 }

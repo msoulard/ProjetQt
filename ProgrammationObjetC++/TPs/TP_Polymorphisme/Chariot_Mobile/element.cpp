@@ -7,7 +7,22 @@
 
 #include "element.h"
 
+/**
+ * @file element.cpp
+ * @brief Element::Element
+ * @details Constructeur de la classe Element
+ */
 Element::Element()
+{
+
+}
+
+/**
+ * @file element.cpp
+ * @brief Element::~Element
+ * @details Destructeur virtuel de la classe Element
+ */
+Element::~Element()
 {
 
 }

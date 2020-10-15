@@ -7,4 +7,6 @@ digraph "/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/ProgrammationObjetC++/TPs
   Node1 [label="trajectoire.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$trajectoire_8h.html",tooltip="The Trajectoire class. "];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="element.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$element_8h.html",tooltip="The Element class. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="iostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }
