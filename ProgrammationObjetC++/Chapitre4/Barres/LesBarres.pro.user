@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.2, 2020-10-08T12:51:29. -->
+<!-- Written by QtCreator 4.12.2, 2020-10-15T11:11:51. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -306,8 +306,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/USERS/ELEVES/SNIR2019/msoulard/ProjetsQt/ProgrammationObjetC++/Chapitre4/Barres/LesBarres.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/USERS/ELEVES/SNIR2019/msoulard/ProjetsQt/ProgrammationObjetC++/Chapitre4/Barres/LesBarres.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">LesBarres2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/ProgrammationObjetC++/Chapitre4/Barres/LesBarres.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/ProgrammationObjetC++/Chapitre4/Barres/LesBarres.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

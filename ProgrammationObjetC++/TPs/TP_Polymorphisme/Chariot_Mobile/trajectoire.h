@@ -10,6 +10,7 @@
  */
 
 #include "element.h"
+#include "vecteur.h"
 #include <iostream>
 
 using namespace std;
@@ -19,12 +20,13 @@ class Trajectoire
 public:
     Trajectoire(const int _nbEtapesMax);
     ~Trajectoire();
-    bool Ajouter(const Element *_pElement);
+    bool Ajouter(Element *_pElement);
     void Afficher();
 private:
     int nbEtapesMax;
     int prochaineEtape;
     Element **parcours;
+    Vecteur depart;
 };
 
 #endif // TRAJECTOIRE_H

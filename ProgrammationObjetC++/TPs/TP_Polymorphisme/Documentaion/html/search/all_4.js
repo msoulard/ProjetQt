@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nbetapesmax',['nbEtapesMax',['../class_trajectoire.html#a62cc9d5c52215094c7f0731e07cccbf5',1,'Trajectoire']]]
+  ['longueur',['longueur',['../class_segment.html#a89584eea5e0b7c9d3fe5bcddf437f358',1,'Segment']]]
 ];

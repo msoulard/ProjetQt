@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Chariot mobile", "index.html", [
+  [ "TP Polymorphisme", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Liste des classes", "annotated.html", "annotated_dup" ],
       [ "Index des classes", "classes.html", null ],

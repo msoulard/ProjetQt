@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parcours',['parcours',['../class_trajectoire.html#a526de5df82ef3ae78757ecb441d4179e',1,'Trajectoire']]],
-  ['prochaineetape',['prochaineEtape',['../class_trajectoire.html#a56fb38e337100dcbc3c49727d8f68c6a',1,'Trajectoire']]]
+  ['nbetapesmax',['nbEtapesMax',['../class_trajectoire.html#a62cc9d5c52215094c7f0731e07cccbf5',1,'Trajectoire']]],
+  ['numero',['numero',['../class_element.html#a8f78ad0a499636690ee0e2674a84eaea',1,'Element']]]
 ];

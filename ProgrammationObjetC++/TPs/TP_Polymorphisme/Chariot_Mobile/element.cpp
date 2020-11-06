@@ -12,7 +12,9 @@
  * @brief Element::Element
  * @details Constructeur de la classe Element
  */
-Element::Element()
+Element::Element(const int _vitesse) :
+    vitesse(_vitesse),
+    numero(0)
 {
 
 }
@@ -25,4 +27,48 @@ Element::Element()
 Element::~Element()
 {
 
+}
+
+/**
+ * @file element.cpp
+ * @brief Element::getNumero
+ * @return
+ * @details Fonction qui permet de récupérer le numero
+ */
+int Element::getNumero() const
+{
+    return numero;
+}
+
+/**
+ * @file element.cpp
+ * @brief Element::setNumero
+ * @param value
+ * @details Fonction qui permet de changer le valeur du numero
+ */
+void Element::setNumero(int value)
+{
+    numero = value;
+}
+
+/**
+ * @file element.cpp
+ * @brief Element::getVitesse
+ * @return
+ * @details Fonction qui permet de récupérer la vitesse
+ */
+int Element::getVitesse() const
+{
+    return vitesse;
+}
+
+/**
+ * @file element.cpp
+ * @brief Element::setVitesse
+ * @param value
+ * @details Fonction qui permet de changer la valeur de la vitesse
+ */
+void Element::setVitesse(int value)
+{
+    vitesse = value;
 }
