@@ -26,7 +26,7 @@ Vecteur::Vecteur(const double _x, const double _y) :
  * @brief Vecteur::operator +
  * @param _autre
  * @return
- * @details Fonction qui permet d'additionner 2 vecteurs
+ * @details Méthode qui permet d'additionner 2 vecteurs
  */
 Vecteur Vecteur::operator+(const Vecteur &_autre)
 {
@@ -40,7 +40,7 @@ Vecteur Vecteur::operator+(const Vecteur &_autre)
  * @brief Vecteur::operator -
  * @param _autre
  * @return
- * @details Fonction qui permet de soustraire 2 vecteurs
+ * @details Méthode qui permet de soustraire 2 vecteurs
  */
 Vecteur Vecteur::operator-(const Vecteur &_autre)
 {
@@ -52,7 +52,7 @@ Vecteur Vecteur::operator-(const Vecteur &_autre)
 /**
  * @file vecteur.cpp
  * @brief Vecteur::Afficher
- * @details Fonction qui affiche les caractéristiques du vecteur
+ * @details Méthode qui affiche les caractéristiques du vecteur
  */
 void Vecteur::Afficher()
 {
@@ -63,7 +63,7 @@ void Vecteur::Afficher()
  * @file vecteur.cpp
  * @brief Vecteur::getX
  * @return
- * @details Fonction qui permet de récupérer la valeur x du vecteur
+ * @details Méthode qui permet de récupérer la valeur x du vecteur
  */
 double Vecteur::getX() const
 {
@@ -74,7 +74,7 @@ double Vecteur::getX() const
  * @file vecteur.cpp
  * @brief Vecteur::setX
  * @param value
- * @details Fonction qui permet de changer la valeur x du vecteur
+ * @details Méthode qui permet de changer la valeur x du vecteur
  */
 void Vecteur::setX(double value)
 {
@@ -86,7 +86,7 @@ void Vecteur::setX(double value)
  * @brief Vecteur::getY
  * @return
  *
- * @details Fonction qui permet de récupérer la valeur y du vecteur
+ * @details Méthode qui permet de récupérer la valeur y du vecteur
  */
 double Vecteur::getY() const
 {
@@ -97,7 +97,7 @@ double Vecteur::getY() const
  * @file vecteur.cpp
  * @brief Vecteur::setY
  * @param value
- * @details Fonction qui permet de changer la valeur y du vecteur
+ * @details Méthode qui permet de changer la valeur y du vecteur
  */
 void Vecteur::setY(double value)
 {

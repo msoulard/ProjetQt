@@ -10,6 +10,8 @@
 #include "segment.h"
 #include "trajectoire.h"
 #include "vecteur.h"
+#include "arc.h"
+#include "pause.h"
 
 using namespace std;
 
@@ -22,8 +24,9 @@ int main()
     possible = uneTrajectoire.Ajouter(&unSegment);
     possible = uneTrajectoire.Ajouter(new Segment(5, 0.927295, 1));
     possible = uneTrajectoire.Ajouter(new Segment(6, 1.5708, 2));
+    possible = uneTrajectoire.Ajouter(new Pause(4));
+    possible = uneTrajectoire.Ajouter(new Arc(5, 3.14159, 0, 6));
     uneTrajectoire.Afficher();
-
 
     return 0;
 }

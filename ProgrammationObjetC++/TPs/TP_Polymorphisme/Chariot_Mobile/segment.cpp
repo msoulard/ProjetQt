@@ -26,7 +26,7 @@ Segment::Segment(const double _longueur, const double _angle, const int _vitesse
 /**
  * @file segment.cpp
  * @brief Segment::Afficher
- * @details Fonction qui permet d'afficher les caractéristiques du segment
+ * @details Méthode qui permet d'afficher les caractéristiques du segment
  */
 void Segment::Afficher()
 {
@@ -38,7 +38,7 @@ void Segment::Afficher()
  * @file segment.cpp
  * @brief Segment::ObtenirLongueur
  * @return
- * @details Fonction qui permet d'obtenir la longueur du segment
+ * @details Méthode qui permet d'obtenir la longueur du segment
  */
 int Segment::ObtenirLongueur()
 {
@@ -49,7 +49,7 @@ int Segment::ObtenirLongueur()
  * @file segment.cpp
  * @brief Segment::ObtenirDuree
  * @return
- * @details Fonction qui permet d'obtenir la durée
+ * @details Méthode qui permet d'obtenir la durée
  */
 double Segment::ObtenirDuree()
 {
@@ -61,7 +61,7 @@ double Segment::ObtenirDuree()
 /**
  * @file segment.cpp
  * @brief Segment::ObtenirVecteurArrive
- * @details Fonction qui permet d'obtenir le vecteur d'arrivée
+ * @details Méthode qui permet d'obtenir le vecteur d'arrivée
  */
 Vecteur Segment::ObtenirVecteurArrive()
 {

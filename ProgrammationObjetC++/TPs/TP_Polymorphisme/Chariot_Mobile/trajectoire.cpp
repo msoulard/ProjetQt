@@ -36,7 +36,7 @@ Trajectoire::~Trajectoire()
  * @brief Trajectoire::Ajouter
  * @param _pElement
  * @return
- * @file Fonction qui permet d'ajouter un élément à la trajectoire
+ * @file Méthode qui permet d'ajouter un élément à la trajectoire
  */
 bool Trajectoire::Ajouter(Element *_pElement)
 {
@@ -52,7 +52,7 @@ bool Trajectoire::Ajouter(Element *_pElement)
 /**
  * @file trajectoire.cpp
  * @brief Trajectoire::Afficher
- * @details Fonction qui permet d'afficher les caractéristiques de la trajectoire
+ * @details Méthode qui permet d'afficher les caractéristiques de la trajectoire
  */
 void Trajectoire::Afficher()
 {
@@ -63,8 +63,8 @@ void Trajectoire::Afficher()
     cout << "Trajectoire :" << endl << endl;
     for(int i = 0 ; i < prochaineEtape ; i++){
         parcours[i]->Afficher();
-        //parcours[i]->ObtenirVecteurArrive().Afficher();
-        (vecteurArrive = vecteurArrive + parcours[i]->ObtenirVecteurArrive()).Afficher();
+        parcours[i]->ObtenirVecteurArrive().Afficher();
+        //(vecteurArrive = vecteurArrive + parcours[i]->ObtenirVecteurArrive()).Afficher();
         duree = duree + parcours[i]->ObtenirDuree();
         longueurTotale = longueurTotale + parcours[i]->ObtenirLongueur();        
     }

@@ -33,7 +33,7 @@ Element::~Element()
  * @file element.cpp
  * @brief Element::getNumero
  * @return
- * @details Fonction qui permet de récupérer le numero
+ * @details Méthode qui permet de récupérer le numero
  */
 int Element::getNumero() const
 {
@@ -44,7 +44,7 @@ int Element::getNumero() const
  * @file element.cpp
  * @brief Element::setNumero
  * @param value
- * @details Fonction qui permet de changer le valeur du numero
+ * @details Méthode qui permet de changer le valeur du numero
  */
 void Element::setNumero(int value)
 {
@@ -55,7 +55,7 @@ void Element::setNumero(int value)
  * @file element.cpp
  * @brief Element::getVitesse
  * @return
- * @details Fonction qui permet de récupérer la vitesse
+ * @details Méthode qui permet de récupérer la vitesse
  */
 int Element::getVitesse() const
 {
@@ -66,7 +66,7 @@ int Element::getVitesse() const
  * @file element.cpp
  * @brief Element::setVitesse
  * @param value
- * @details Fonction qui permet de changer la valeur de la vitesse
+ * @details Méthode qui permet de changer la valeur de la vitesse
  */
 void Element::setVitesse(int value)
 {
