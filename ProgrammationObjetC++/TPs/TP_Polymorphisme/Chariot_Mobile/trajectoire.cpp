@@ -63,8 +63,8 @@ void Trajectoire::Afficher()
     cout << "Trajectoire :" << endl << endl;
     for(int i = 0 ; i < prochaineEtape ; i++){
         parcours[i]->Afficher();
-        parcours[i]->ObtenirVecteurArrive().Afficher();
-        //(vecteurArrive = vecteurArrive + parcours[i]->ObtenirVecteurArrive()).Afficher();
+        //parcours[i]->ObtenirVecteurArrive().Afficher();
+        (vecteurArrive = vecteurArrive + parcours[i]->ObtenirVecteurArrive()).Afficher();
         duree = duree + parcours[i]->ObtenirDuree();
         longueurTotale = longueurTotale + parcours[i]->ObtenirLongueur();        
     }
