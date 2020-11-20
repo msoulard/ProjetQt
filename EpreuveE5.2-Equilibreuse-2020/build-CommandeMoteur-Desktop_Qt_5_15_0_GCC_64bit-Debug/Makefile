@@ -55,12 +55,14 @@ OBJECTS_DIR   = ./
 SOURCES       = ../CommandeMoteur/capot.cpp \
 		../CommandeMoteur/main.cpp \
 		../CommandeMoteur/equilibreuse.cpp \
-		../CommandeMoteur/mcculdaq.cpp moc_capot.cpp \
+		../CommandeMoteur/mcculdaq.cpp \
+		../CommandeMoteur/moteur.cpp moc_capot.cpp \
 		moc_equilibreuse.cpp
 OBJECTS       = capot.o \
 		main.o \
 		equilibreuse.o \
 		mcculdaq.o \
+		moteur.o \
 		moc_capot.o \
 		moc_equilibreuse.o
 DIST          = /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -270,10 +272,12 @@ DIST          = /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/lex.prf \
 		../CommandeMoteur/CommandeMoteur.pro ../CommandeMoteur/capot.h \
 		../CommandeMoteur/equilibreuse.h \
-		../CommandeMoteur/mcculdaq.h ../CommandeMoteur/capot.cpp \
+		../CommandeMoteur/mcculdaq.h \
+		../CommandeMoteur/moteur.h ../CommandeMoteur/capot.cpp \
 		../CommandeMoteur/main.cpp \
 		../CommandeMoteur/equilibreuse.cpp \
-		../CommandeMoteur/mcculdaq.cpp
+		../CommandeMoteur/mcculdaq.cpp \
+		../CommandeMoteur/moteur.cpp
 QMAKE_TARGET  = CommandeMoteur
 DESTDIR       = 
 TARGET        = CommandeMoteur
@@ -713,8 +717,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../CommandeMoteur/capot.h ../CommandeMoteur/equilibreuse.h ../CommandeMoteur/mcculdaq.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CommandeMoteur/capot.cpp ../CommandeMoteur/main.cpp ../CommandeMoteur/equilibreuse.cpp ../CommandeMoteur/mcculdaq.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CommandeMoteur/capot.h ../CommandeMoteur/equilibreuse.h ../CommandeMoteur/mcculdaq.h ../CommandeMoteur/moteur.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../CommandeMoteur/capot.cpp ../CommandeMoteur/main.cpp ../CommandeMoteur/equilibreuse.cpp ../CommandeMoteur/mcculdaq.cpp ../CommandeMoteur/moteur.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../CommandeMoteur/equilibreuse.ui $(DISTDIR)/
 
 
@@ -974,6 +978,70 @@ moc_equilibreuse.cpp: ../CommandeMoteur/equilibreuse.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../CommandeMoteur/capot.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QObject \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../CommandeMoteur/mcculdaq.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QtGlobal \
+		../includes/uldaq.h \
+		../includes/UlDaqDeviceManager.h \
+		../includes/interfaces/UlDaqDevice.h \
+		../includes/interfaces/UlAiDevice.h \
+		../includes/interfaces/UlAiConfig.h \
+		../includes/interfaces/UlAiInfo.h \
+		../includes/interfaces/UlAoDevice.h \
+		../includes/interfaces/UlAoConfig.h \
+		../includes/interfaces/UlAoInfo.h \
+		../includes/interfaces/UlCtrDevice.h \
+		../includes/interfaces/UlCtrInfo.h \
+		../includes/interfaces/UlCtrConfig.h \
+		../includes/interfaces/UlDaqDeviceConfig.h \
+		../includes/interfaces/UlDaqDeviceInfo.h \
+		../includes/interfaces/UlDevMemInfo.h \
+		../includes/interfaces/UlMemRegionInfo.h \
+		../includes/interfaces/UlDaqIDevice.h \
+		../includes/interfaces/UlDaqIInfo.h \
+		../includes/interfaces/UlDaqODevice.h \
+		../includes/interfaces/UlDaqOInfo.h \
+		../includes/interfaces/UlDioDevice.h \
+		../includes/interfaces/UlDioConfig.h \
+		../includes/interfaces/UlDioInfo.h \
+		../includes/interfaces/UlTmrDevice.h \
+		../includes/interfaces/UlTmrInfo.h \
+		../includes/UlException.h \
+		../includes/DioDevice.h \
+		../includes/IoDevice.h \
+		../includes/DaqDevice.h \
+		../includes/DaqDeviceId.h \
+		../includes/DaqDeviceInfo.h \
+		../includes/ul_internal.h \
+		../includes/DevMemInfo.h \
+		../includes/MemRegionInfo.h \
+		../includes/DaqDeviceConfig.h \
+		../includes/utility/FnLog.h \
+		../includes/utility/Endian.h \
+		../includes/utility/UlLock.h \
+		../includes/utility/ThreadEvent.h \
+		../includes/DioInfo.h \
+		../includes/DioPortInfo.h \
+		../includes/interfaces/UlDioPortInfo.h \
+		../includes/DioConfig.h \
+		../includes/AoDevice.h \
+		../includes/AoInfo.h \
+		../includes/AoConfig.h \
+		../includes/AiDevice.h \
+		../includes/AiInfo.h \
+		../includes/AiChanInfo.h \
+		../includes/interfaces/UlAiChanInfo.h \
+		../includes/AiConfig.h \
+		../includes/CtrDevice.h \
+		../includes/CtrInfo.h \
+		../includes/CtrConfig.h \
 		moc_predefs.h \
 		/opt/Qt/5.15.0/gcc_64/bin/moc
 	/opt/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/EpreuveE5.2-Equilibreuse-2020/build-CommandeMoteur-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/EpreuveE5.2-Equilibreuse-2020/CommandeMoteur -I/opt/Qt/5.15.0/gcc_64/include -I/opt/Qt/5.15.0/gcc_64/include/QtWidgets -I/opt/Qt/5.15.0/gcc_64/include/QtGui -I/opt/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CommandeMoteur/equilibreuse.h -o moc_equilibreuse.cpp
@@ -1221,6 +1289,70 @@ main.o: ../CommandeMoteur/main.cpp ../CommandeMoteur/equilibreuse.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../CommandeMoteur/capot.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QObject \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../CommandeMoteur/mcculdaq.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QtGlobal \
+		../includes/uldaq.h \
+		../includes/UlDaqDeviceManager.h \
+		../includes/interfaces/UlDaqDevice.h \
+		../includes/interfaces/UlAiDevice.h \
+		../includes/interfaces/UlAiConfig.h \
+		../includes/interfaces/UlAiInfo.h \
+		../includes/interfaces/UlAoDevice.h \
+		../includes/interfaces/UlAoConfig.h \
+		../includes/interfaces/UlAoInfo.h \
+		../includes/interfaces/UlCtrDevice.h \
+		../includes/interfaces/UlCtrInfo.h \
+		../includes/interfaces/UlCtrConfig.h \
+		../includes/interfaces/UlDaqDeviceConfig.h \
+		../includes/interfaces/UlDaqDeviceInfo.h \
+		../includes/interfaces/UlDevMemInfo.h \
+		../includes/interfaces/UlMemRegionInfo.h \
+		../includes/interfaces/UlDaqIDevice.h \
+		../includes/interfaces/UlDaqIInfo.h \
+		../includes/interfaces/UlDaqODevice.h \
+		../includes/interfaces/UlDaqOInfo.h \
+		../includes/interfaces/UlDioDevice.h \
+		../includes/interfaces/UlDioConfig.h \
+		../includes/interfaces/UlDioInfo.h \
+		../includes/interfaces/UlTmrDevice.h \
+		../includes/interfaces/UlTmrInfo.h \
+		../includes/UlException.h \
+		../includes/DioDevice.h \
+		../includes/IoDevice.h \
+		../includes/DaqDevice.h \
+		../includes/DaqDeviceId.h \
+		../includes/DaqDeviceInfo.h \
+		../includes/ul_internal.h \
+		../includes/DevMemInfo.h \
+		../includes/MemRegionInfo.h \
+		../includes/DaqDeviceConfig.h \
+		../includes/utility/FnLog.h \
+		../includes/utility/Endian.h \
+		../includes/utility/UlLock.h \
+		../includes/utility/ThreadEvent.h \
+		../includes/DioInfo.h \
+		../includes/DioPortInfo.h \
+		../includes/interfaces/UlDioPortInfo.h \
+		../includes/DioConfig.h \
+		../includes/AoDevice.h \
+		../includes/AoInfo.h \
+		../includes/AoConfig.h \
+		../includes/AiDevice.h \
+		../includes/AiInfo.h \
+		../includes/AiChanInfo.h \
+		../includes/interfaces/UlAiChanInfo.h \
+		../includes/AiConfig.h \
+		../includes/CtrDevice.h \
+		../includes/CtrInfo.h \
+		../includes/CtrConfig.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1337,6 +1469,70 @@ equilibreuse.o: ../CommandeMoteur/equilibreuse.cpp ../CommandeMoteur/equilibreus
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../CommandeMoteur/capot.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QObject \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../CommandeMoteur/mcculdaq.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QtGlobal \
+		../includes/uldaq.h \
+		../includes/UlDaqDeviceManager.h \
+		../includes/interfaces/UlDaqDevice.h \
+		../includes/interfaces/UlAiDevice.h \
+		../includes/interfaces/UlAiConfig.h \
+		../includes/interfaces/UlAiInfo.h \
+		../includes/interfaces/UlAoDevice.h \
+		../includes/interfaces/UlAoConfig.h \
+		../includes/interfaces/UlAoInfo.h \
+		../includes/interfaces/UlCtrDevice.h \
+		../includes/interfaces/UlCtrInfo.h \
+		../includes/interfaces/UlCtrConfig.h \
+		../includes/interfaces/UlDaqDeviceConfig.h \
+		../includes/interfaces/UlDaqDeviceInfo.h \
+		../includes/interfaces/UlDevMemInfo.h \
+		../includes/interfaces/UlMemRegionInfo.h \
+		../includes/interfaces/UlDaqIDevice.h \
+		../includes/interfaces/UlDaqIInfo.h \
+		../includes/interfaces/UlDaqODevice.h \
+		../includes/interfaces/UlDaqOInfo.h \
+		../includes/interfaces/UlDioDevice.h \
+		../includes/interfaces/UlDioConfig.h \
+		../includes/interfaces/UlDioInfo.h \
+		../includes/interfaces/UlTmrDevice.h \
+		../includes/interfaces/UlTmrInfo.h \
+		../includes/UlException.h \
+		../includes/DioDevice.h \
+		../includes/IoDevice.h \
+		../includes/DaqDevice.h \
+		../includes/DaqDeviceId.h \
+		../includes/DaqDeviceInfo.h \
+		../includes/ul_internal.h \
+		../includes/DevMemInfo.h \
+		../includes/MemRegionInfo.h \
+		../includes/DaqDeviceConfig.h \
+		../includes/utility/FnLog.h \
+		../includes/utility/Endian.h \
+		../includes/utility/UlLock.h \
+		../includes/utility/ThreadEvent.h \
+		../includes/DioInfo.h \
+		../includes/DioPortInfo.h \
+		../includes/interfaces/UlDioPortInfo.h \
+		../includes/DioConfig.h \
+		../includes/AoDevice.h \
+		../includes/AoInfo.h \
+		../includes/AoConfig.h \
+		../includes/AiDevice.h \
+		../includes/AiInfo.h \
+		../includes/AiChanInfo.h \
+		../includes/interfaces/UlAiChanInfo.h \
+		../includes/AiConfig.h \
+		../includes/CtrDevice.h \
+		../includes/CtrInfo.h \
+		../includes/CtrConfig.h \
 		ui_equilibreuse.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtCore/QVariant \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
@@ -1353,7 +1549,9 @@ equilibreuse.o: ../CommandeMoteur/equilibreuse.cpp ../CommandeMoteur/equilibreus
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QWidget
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/QPalette \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o equilibreuse.o ../CommandeMoteur/equilibreuse.cpp
 
 mcculdaq.o: ../CommandeMoteur/mcculdaq.cpp ../CommandeMoteur/mcculdaq.h \
@@ -1434,6 +1632,130 @@ mcculdaq.o: ../CommandeMoteur/mcculdaq.cpp ../CommandeMoteur/mcculdaq.h \
 		../includes/CtrInfo.h \
 		../includes/CtrConfig.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mcculdaq.o ../CommandeMoteur/mcculdaq.cpp
+
+moteur.o: ../CommandeMoteur/moteur.cpp ../CommandeMoteur/moteur.h \
+		../CommandeMoteur/mcculdaq.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QtGlobal \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
+		../includes/uldaq.h \
+		../includes/UlDaqDeviceManager.h \
+		../includes/interfaces/UlDaqDevice.h \
+		../includes/interfaces/UlAiDevice.h \
+		../includes/interfaces/UlAiConfig.h \
+		../includes/interfaces/UlAiInfo.h \
+		../includes/interfaces/UlAoDevice.h \
+		../includes/interfaces/UlAoConfig.h \
+		../includes/interfaces/UlAoInfo.h \
+		../includes/interfaces/UlCtrDevice.h \
+		../includes/interfaces/UlCtrInfo.h \
+		../includes/interfaces/UlCtrConfig.h \
+		../includes/interfaces/UlDaqDeviceConfig.h \
+		../includes/interfaces/UlDaqDeviceInfo.h \
+		../includes/interfaces/UlDevMemInfo.h \
+		../includes/interfaces/UlMemRegionInfo.h \
+		../includes/interfaces/UlDaqIDevice.h \
+		../includes/interfaces/UlDaqIInfo.h \
+		../includes/interfaces/UlDaqODevice.h \
+		../includes/interfaces/UlDaqOInfo.h \
+		../includes/interfaces/UlDioDevice.h \
+		../includes/interfaces/UlDioConfig.h \
+		../includes/interfaces/UlDioInfo.h \
+		../includes/interfaces/UlTmrDevice.h \
+		../includes/interfaces/UlTmrInfo.h \
+		../includes/UlException.h \
+		../includes/DioDevice.h \
+		../includes/IoDevice.h \
+		../includes/DaqDevice.h \
+		../includes/DaqDeviceId.h \
+		../includes/DaqDeviceInfo.h \
+		../includes/ul_internal.h \
+		../includes/DevMemInfo.h \
+		../includes/MemRegionInfo.h \
+		../includes/DaqDeviceConfig.h \
+		../includes/utility/FnLog.h \
+		../includes/utility/Endian.h \
+		../includes/utility/UlLock.h \
+		../includes/utility/ThreadEvent.h \
+		../includes/DioInfo.h \
+		../includes/DioPortInfo.h \
+		../includes/interfaces/UlDioPortInfo.h \
+		../includes/DioConfig.h \
+		../includes/AoDevice.h \
+		../includes/AoInfo.h \
+		../includes/AoConfig.h \
+		../includes/AiDevice.h \
+		../includes/AiInfo.h \
+		../includes/AiChanInfo.h \
+		../includes/interfaces/UlAiChanInfo.h \
+		../includes/AiConfig.h \
+		../includes/CtrDevice.h \
+		../includes/CtrInfo.h \
+		../includes/CtrConfig.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moteur.o ../CommandeMoteur/moteur.cpp
 
 moc_capot.o: moc_capot.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_capot.o moc_capot.cpp

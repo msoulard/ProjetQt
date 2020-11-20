@@ -20,12 +20,14 @@ SOURCES += \
     capot.cpp \
     main.cpp \
     equilibreuse.cpp \
-    mcculdaq.cpp
+    mcculdaq.cpp \
+    moteur.cpp
 
 HEADERS += \
     capot.h \
     equilibreuse.h \
-    mcculdaq.h
+    mcculdaq.h \
+    moteur.h
 
 FORMS += \
     equilibreuse.ui
