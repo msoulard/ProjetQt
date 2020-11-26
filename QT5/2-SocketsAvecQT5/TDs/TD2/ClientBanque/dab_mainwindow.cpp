@@ -8,6 +8,7 @@ DAB_MainWindow::DAB_MainWindow(QWidget *parent)
     ui->setupUi(this);
     socketClientBanque = new QTcpSocket;
     ui->groupBox_Operations->setEnabled(false);
+    ui->radioButton_Solde->setChecked(true);
     connect(socketClientBanque, &QAbstractSocket::connected, this, &DAB_MainWindow::onQTcpSocket_connected);
     connect(socketClientBanque, &QAbstractSocket::disconnected, this, &DAB_MainWindow::onQTcpSocket_disconnected);
     connect(socketClientBanque, QOverload<QAbstractSocket::SocketError>::of(&QAbstractSocket::error), this, &DAB_MainWindow::onQTcpSocket_error);
@@ -37,7 +38,64 @@ void DAB_MainWindow::on_pushButton_Connexion_clicked()
 
 void DAB_MainWindow::on_pushButton_Envoi_clicked()
 {
-
+    quint16 taille = 0;
+    QChar commande;
+    QBuffer tampon;
+    QString message;
+    float montant = 0;
+    if(ui->radioButton_Depot->isChecked()){
+        commande = 'D';
+        montant = ui->lineEdit_Montant->text().toFloat();
+        tampon.open(QIODevice::WriteOnly);
+        //association du tampon au flux de sortie
+        QDataStream out(&tampon);
+        //construction de la trame
+        out << taille << commande << montant;
+        //calcul de la taille de la trame
+        taille = tampon.size()-sizeof(taille);
+        //placement sur la première position du flux pour pouvoir modifier la taille
+        tampon.seek(0);
+        //modification de la trame avec la taille réel de la trame
+        out << taille;
+        //envoi du QByteArray du tampon via la socket
+        socketClientBanque->write(tampon.buffer());
+        ui->listWidget_Etat->addItem("Demande de dépot envoyé");
+    }
+    if(ui->radioButton_Retrait->isChecked()){
+        commande = 'R';
+        montant = ui->lineEdit_Montant->text().toFloat();
+        tampon.open(QIODevice::WriteOnly);
+        //association du tampon au flux de sortie
+        QDataStream out(&tampon);
+        //construction de la trame
+        out << taille << commande << montant;
+        //calcul de la taille de la trame
+        taille = tampon.size()-sizeof(taille);
+        //placement sur la première position du flux pour pouvoir modifier la taille
+        tampon.seek(0);
+        //modification de la trame avec la taille réel de la trame
+        out << taille;
+        //envoi du QByteArray du tampon via la socket
+        socketClientBanque->write(tampon.buffer());
+        ui->listWidget_Etat->addItem("Demande de retrait envoyé");
+    }
+    if(ui->radioButton_Solde->isChecked()){
+        commande = 'S';
+        tampon.open(QIODevice::WriteOnly);
+        //association du tampon au flux de sortie
+        QDataStream out(&tampon);
+        //construction de la trame
+        out << taille << commande;
+        //calcul de la taille de la trame
+        taille = tampon.size()-sizeof(taille);
+        //placement sur la première position du flux pour pouvoir modifier la taille
+        tampon.seek(0);
+        //modification de la trame avec la taille réel de la trame
+        out << taille;
+        //envoi du QByteArray du tampon via la socket
+        socketClientBanque->write(tampon.buffer());
+        ui->listWidget_Etat->addItem("Demande de consultation du solde envoyé");
+    }
 }
 
 void DAB_MainWindow::on_pushButton_NumCompte_clicked()

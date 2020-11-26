@@ -94,31 +94,31 @@ void ClientWidget::onQTcpSocket_hostFound()
 void ClientWidget::onQTcpSocket_stateChanged(QAbstractSocket::SocketState socketState)
 {
     QString message;
-        switch (socketState)
-        {
-           case QAbstractSocket::UnconnectedState:
-              message = "etat déconnecté";
-              break;
-           case QAbstractSocket::HostLookupState:
-              message = "socket recherche un nom d'hote";
-              break;
-        case QAbstractSocket::ConnectingState:
-           message = "etat connecté";
-           break;
-        case QAbstractSocket::ConnectedState:
-           message = "etat connecté";
-           break;
-        case QAbstractSocket::BoundState:
-           message = "la socket est liée avec le port et l'ip";
-           break;
-        case QAbstractSocket::ClosingState:
-           message = "etat fermé";
-           break;
-        case QAbstractSocket::ListeningState:
-           message = "etat d'écoute";
-           break;
-        }
-         ui->textEdit_Etat->append(message);
+    switch (socketState)
+    {
+    case QAbstractSocket::UnconnectedState:
+        message = "etat déconnecté";
+        break;
+    case QAbstractSocket::HostLookupState:
+        message = "socket recherche un nom d'hote";
+        break;
+    case QAbstractSocket::ConnectingState:
+        message = "etat connecté";
+        break;
+    case QAbstractSocket::ConnectedState:
+        message = "etat connecté";
+        break;
+    case QAbstractSocket::BoundState:
+        message = "la socket est liée avec le port et l'ip";
+        break;
+    case QAbstractSocket::ClosingState:
+        message = "etat fermé";
+        break;
+    case QAbstractSocket::ListeningState:
+        message = "etat d'écoute";
+        break;
+    }
+    ui->textEdit_Etat->append(message);
 }
 
 void ClientWidget::onQTcpSocket_aboutToClose()
@@ -139,23 +139,24 @@ void ClientWidget::onQTcpSocket_readChannelFinished()
 void ClientWidget::onQTcpSocket_readyRead()
 {
     ui->textEdit_Etat->append("Des données sont disponibles à la lecture");
-    QByteArray data = socketDialServeur->readAll();
-
-
-            switch (typeDeDemande.at(0).toLatin1()) {
-            case 'u':
-                ui->lineEdit_NomUtili->setText(data);
-                break;
-            case 'c':
-                ui->lineEdit_NomOrdi->setText(data);
-                break;
-            case 'o':
-                ui->lineEdit_OSUtili->setText(data);
-                break;
-            case 'a':
-                ui->lineEdit_ArchitectureProcess->setText(data);
-                break;
-            default:
-                break;
-            }
+    QByteArray data;
+    if(socketDialServeur->bytesAvailable() > 0){
+        data = socketDialServeur->readAll();
+    }
+    switch (typeDeDemande.at(0).toLatin1()) {
+    case 'u':
+        ui->lineEdit_NomUtili->setText(data);
+        break;
+    case 'c':
+        ui->lineEdit_NomOrdi->setText(data);
+        break;
+    case 'o':
+        ui->lineEdit_OSUtili->setText(data);
+        break;
+    case 'a':
+        ui->lineEdit_ArchitectureProcess->setText(data);
+        break;
+    default:
+        break;
+    }
 }
