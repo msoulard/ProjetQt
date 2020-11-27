@@ -860,6 +860,7 @@ moc_clavier.cpp: ../CentraleDAlarme/clavier.h \
 		../CentraleDAlarme/detecteur.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../CentraleDAlarme/detecteurtemporise.h \
 		moc_predefs.h \
 		/opt/Qt/5.15.0/gcc_64/bin/moc
 	/opt/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/QT5/A-ProjetCentraleDAlarme/TD2/build-CentraleDAlarme-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/QT5/A-ProjetCentraleDAlarme/TD2/CentraleDAlarme -I/opt/Qt/5.15.0/gcc_64/include -I/opt/Qt/5.15.0/gcc_64/include/QtWidgets -I/opt/Qt/5.15.0/gcc_64/include/QtGui -I/opt/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CentraleDAlarme/clavier.h -o moc_clavier.cpp
@@ -1104,18 +1105,6 @@ detecteur.o: ../CentraleDAlarme/detecteur.cpp ../CentraleDAlarme/detecteur.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_detecteur.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/QVariant \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o detecteur.o ../CentraleDAlarme/detecteur.cpp
@@ -1343,6 +1332,7 @@ main.o: ../CentraleDAlarme/main.cpp ../CentraleDAlarme/clavier.h \
 		../CentraleDAlarme/detecteur.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../CentraleDAlarme/detecteurtemporise.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1462,27 +1452,8 @@ clavier.o: ../CentraleDAlarme/clavier.cpp ../CentraleDAlarme/clavier.h \
 		../CentraleDAlarme/detecteur.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../CentraleDAlarme/detecteurtemporise.h \
 		ui_clavier.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/QVariant \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QCheckBox \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qcheckbox.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
-		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clavier.o ../CentraleDAlarme/clavier.cpp

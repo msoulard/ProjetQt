@@ -1,9 +1,9 @@
 #include "serveurwidget.h"
 #include "ui_serveurwidget.h"
 
-ServeurWidget::ServeurWidget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::ServeurWidget)
+ServeurWidget::ServeurWidget(QWidget *parent):
+    QWidget(parent),
+    ui(new Ui::ServeurWidget)
 {
     ui->setupUi(this);
     socketEcouteServeur = new QTcpServer;
@@ -63,6 +63,7 @@ void ServeurWidget::on_pushButton_LancerServeur_clicked()
 
 void ServeurWidget::onQProcess_readyReadStandardOutput()
 {
+    socketEcouteServeur->listen();
     QString reponse = process->readAllStandardOutput();
     if(!reponse.isEmpty())    {
         QString message = "Réponse envoyée à " + socketDialogueClient->peerAddress().toString()+" : " + reponse;
