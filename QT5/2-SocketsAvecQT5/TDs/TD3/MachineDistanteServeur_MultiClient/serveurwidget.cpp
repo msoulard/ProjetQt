@@ -7,46 +7,51 @@ ServeurWidget::ServeurWidget(QWidget *parent):
 {
     ui->setupUi(this);
     socketEcouteServeur = new QTcpServer;
-    socketDialogueClient = new QTcpSocket;
-    process = new QProcess;
     connect(socketEcouteServeur, &QTcpServer::newConnection, this, &ServeurWidget::onQTcpServer_newConnection);
-    connect(process, &QProcess::readyReadStandardOutput, this, &ServeurWidget::onQProcess_readyReadStandardOutput);
 }
 
 ServeurWidget::~ServeurWidget()
 {
     delete ui;
     delete socketEcouteServeur;
-    delete socketDialogueClient;
-    delete process;
+    //delete socketDialogueClient;
+    //delete process;
 }
 
 void ServeurWidget::onQTcpServer_newConnection()
 {
-    socketDialogueClient = socketEcouteServeur->nextPendingConnection();
-    connect(socketDialogueClient, &QTcpSocket::readyRead, this, &ServeurWidget::onQTcpSocket_readyRead);
-    connect(socketDialogueClient, &QTcpSocket::disconnected, this, &ServeurWidget::onQTcpSocket_disconnected);
+    QTcpSocket *client;
+    QProcess *processClient;
+    processClient = new QProcess;
+    client = socketEcouteServeur->nextPendingConnection();
+    connect(client,&QTcpSocket::readyRead,this,&ServeurWidget::onQTcpSocket_readyRead);
+    connect(client, &QTcpSocket::disconnected, this, &ServeurWidget::onQTcpSocket_disconnected);
+    socketDialogueClient.append(client);
+    connect(processClient, &QProcess::readyReadStandardOutput, this, &ServeurWidget::onQProcess_readyReadStandardOutput);
+    process.append(processClient);
     ui->listWidget_Clients->addItem("Le client est connecté");
 }
 
 void ServeurWidget::onQTcpSocket_readyRead()
-{    
+{
     QString reponse;
-    QByteArray data = socketDialogueClient->readAll();
+    QTcpSocket *client=qobject_cast<QTcpSocket*>(sender());
+    QByteArray data = client->readAll();
+    int indexProcess=socketDialogueClient.indexOf(client);
     switch (data[0]) {
     case 'u' :
         reponse = getenv("USER");
-        socketDialogueClient->write(reponse.toLatin1());
+        socketDialogueClient.at(indexProcess)->write(reponse.toLatin1());
         break;
     case 'c' :
         reponse = QHostInfo::localHostName();
-        socketDialogueClient->write(reponse.toLatin1());
+        socketDialogueClient.at(indexProcess)->write(reponse.toLatin1());
         break;
     case 'o' :
-        process->start("uname",QStringList("-p"));
+        process.at(indexProcess)->start("uname",QStringList("-p"));
         break;
     case 'a' :
-        process->start("uname");
+        process.at(indexProcess)->start("uname");
         break;
     default :
         reponse = "erreur";
@@ -57,6 +62,10 @@ void ServeurWidget::onQTcpSocket_readyRead()
 void ServeurWidget::onQTcpSocket_disconnected()
 {
     ui->listWidget_Clients->addItem("Le client est déconnecté");
+    QTcpSocket *client=qobject_cast<QTcpSocket*>(sender());
+    int indexProcess=socketDialogueClient.indexOf(client);
+    socketDialogueClient.removeOne(client);
+    socketDialogueClient.removeAt(indexProcess);
 }
 
 
@@ -69,10 +78,12 @@ void ServeurWidget::on_pushButton_LancerServeur_clicked()
 
 void ServeurWidget::onQProcess_readyReadStandardOutput()
 {
-    QString reponse = process->readAllStandardOutput();
+    QProcess *processClient=qobject_cast<QProcess*>(sender());
+    int indexProcess=process.indexOf(processClient);
+    QString reponse = process.at(indexProcess)->readAllStandardOutput();
     if(!reponse.isEmpty())    {
         //QString message = "Réponse envoyée à " + socketDialogueClient->peerAddress().toString()+" : " + reponse;
         //ui->listWidget_Clients->addItem(message);
-        socketDialogueClient->write(reponse.toLatin1());
+        socketDialogueClient.at(indexProcess)->write(reponse.toLatin1());
     }
 }

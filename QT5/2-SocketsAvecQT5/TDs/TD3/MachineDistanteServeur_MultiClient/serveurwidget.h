@@ -27,8 +27,8 @@ private slots :
     void onQProcess_readyReadStandardOutput();
 private:
     Ui::ServeurWidget *ui;
-    QTcpSocket *socketDialogueClient;
+    QList<QTcpSocket *>socketDialogueClient;
     QTcpServer *socketEcouteServeur;
-    QProcess *process;
+    QList<QProcess *>process;
 };
 #endif // SERVEURWIDGET_H
