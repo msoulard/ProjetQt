@@ -2,6 +2,7 @@
 #define BANQUEMAINWINDOW_H
 
 #include <QMainWindow>
+#include "serveurbanque.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class BanqueMainWindow; }
@@ -17,5 +18,6 @@ public:
 
 private:
     Ui::BanqueMainWindow *ui;
+    ServeurBanque *leServeur;
 };
 #endif // BANQUEMAINWINDOW_H
