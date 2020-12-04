@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QTimer>
+#include <QString>
+#include <QDebug>
 #include "porte.h"
 #include "boutonpoussoir.h"
 

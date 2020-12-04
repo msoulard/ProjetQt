@@ -54,10 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Banque/compteclient.cpp \
 		../Banque/main.cpp \
-		../Banque/banquemainwindow.cpp moc_banquemainwindow.cpp
+		../Banque/banquemainwindow.cpp \
+		../Banque/serveurbanque.cpp moc_banquemainwindow.cpp
 OBJECTS       = compteclient.o \
 		main.o \
 		banquemainwindow.o \
+		serveurbanque.o \
 		moc_banquemainwindow.o
 DIST          = /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/common/unix.conf \
@@ -243,6 +245,7 @@ DIST          = /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_post.prf \
+		../Banque/.qmake.stash \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -264,9 +267,11 @@ DIST          = /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/lex.prf \
 		../Banque/Banque.pro ../Banque/banquemainwindow.h \
-		../Banque/compteclient.h ../Banque/compteclient.cpp \
+		../Banque/compteclient.h \
+		../Banque/serveurbanque.h ../Banque/compteclient.cpp \
 		../Banque/main.cpp \
-		../Banque/banquemainwindow.cpp
+		../Banque/banquemainwindow.cpp \
+		../Banque/serveurbanque.cpp
 QMAKE_TARGET  = Banque
 DESTDIR       = 
 TARGET        = Banque
@@ -462,6 +467,7 @@ Makefile: ../Banque/Banque.pro /opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.con
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt/5.15.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -668,6 +674,7 @@ Makefile: ../Banque/Banque.pro /opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.con
 /opt/Qt/5.15.0/gcc_64/mkspecs/features/qt_config.prf:
 /opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/Qt/5.15.0/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/Qt/5.15.0/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/Qt/5.15.0/gcc_64/mkspecs/features/toolchain.prf:
 /opt/Qt/5.15.0/gcc_64/mkspecs/features/default_pre.prf:
@@ -704,8 +711,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Banque/banquemainwindow.h ../Banque/compteclient.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Banque/compteclient.cpp ../Banque/main.cpp ../Banque/banquemainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Banque/banquemainwindow.h ../Banque/compteclient.h ../Banque/serveurbanque.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Banque/compteclient.cpp ../Banque/main.cpp ../Banque/banquemainwindow.cpp ../Banque/serveurbanque.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Banque/banquemainwindow.ui $(DISTDIR)/
 
 
@@ -848,6 +855,21 @@ moc_banquemainwindow.cpp: ../Banque/banquemainwindow.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../Banque/serveurbanque.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpServer \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpserver.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qhostaddress.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QList \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../Banque/compteclient.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpSocket \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpsocket.h \
 		moc_predefs.h \
 		/opt/Qt/5.15.0/gcc_64/bin/moc
 	/opt/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/QT5/2-SocketsAvecQT5/TDs/TD4/build-Banque-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/QT5/2-SocketsAvecQT5/TDs/TD4/Banque -I/opt/Qt/5.15.0/gcc_64/include -I/opt/Qt/5.15.0/gcc_64/include/QtWidgets -I/opt/Qt/5.15.0/gcc_64/include/QtGui -I/opt/Qt/5.15.0/gcc_64/include/QtNetwork -I/opt/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Banque/banquemainwindow.h -o moc_banquemainwindow.cpp
@@ -873,7 +895,76 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-compteclient.o: ../Banque/compteclient.cpp ../Banque/compteclient.h
+compteclient.o: ../Banque/compteclient.cpp ../Banque/compteclient.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpSocket \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o compteclient.o ../Banque/compteclient.cpp
 
 main.o: ../Banque/main.cpp ../Banque/banquemainwindow.h \
@@ -983,6 +1074,21 @@ main.o: ../Banque/main.cpp ../Banque/banquemainwindow.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../Banque/serveurbanque.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpServer \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpserver.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qhostaddress.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QList \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../Banque/compteclient.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpSocket \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpsocket.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1099,8 +1205,158 @@ banquemainwindow.o: ../Banque/banquemainwindow.cpp ../Banque/banquemainwindow.h 
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
-		ui_banquemainwindow.h
+		../Banque/serveurbanque.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpServer \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpserver.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qhostaddress.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QList \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../Banque/compteclient.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpSocket \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpsocket.h \
+		ui_banquemainwindow.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QVariant \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o banquemainwindow.o ../Banque/banquemainwindow.cpp
+
+serveurbanque.o: ../Banque/serveurbanque.cpp ../Banque/serveurbanque.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpServer \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpserver.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qhostaddress.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QList \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qmargins.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qrect.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qsize.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qpalette.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qcolor.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qrgb.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qrgba64.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qbrush.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qmatrix.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qpolygon.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qregion.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qdatastream.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qline.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtransform.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qimage.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qpixmap.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qfont.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qcursor.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qevent.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qurl.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qurlquery.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qfile.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../Banque/compteclient.h \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/QTcpSocket \
+		/opt/Qt/5.15.0/gcc_64/include/QtNetwork/qtcpsocket.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serveurbanque.o ../Banque/serveurbanque.cpp
 
 moc_banquemainwindow.o: moc_banquemainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_banquemainwindow.o moc_banquemainwindow.cpp

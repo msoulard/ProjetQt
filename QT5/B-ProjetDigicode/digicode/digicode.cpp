@@ -40,7 +40,7 @@ Digicode::Digicode() :
             touches[l][c]->setText(TableDesSymboles[l][c]);
             touches[l][c]->setMaximumWidth(80);
             touches[l][c]->setMinimumHeight(80);
-            touches[l][c]->setStyleSheet("background-color : gray;");
+            touches[l][c]->setStyleSheet("background-color : grey;");
             touches[l][c]->setEnabled(true);
             grille->addWidget(touches[l][c], l+1, c);
             connect(touches[l][c], &QPushButton::clicked, this, &Digicode::onQPushButtonClicked);

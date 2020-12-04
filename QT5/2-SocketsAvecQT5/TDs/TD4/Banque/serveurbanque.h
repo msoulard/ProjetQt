@@ -3,15 +3,17 @@
 
 #include <QTcpServer>
 #include <QList>
+#include <QMessageBox>
+#include <QDebug>
 #include "compteclient.h"
 
 class ServeurBanque : public QTcpServer
 {
 public:
-    ServeurBanque(QObject *_parent);
+    ServeurBanque(QObject *_parent = nullptr);
     void Start();
     void Stop();
-    void EnvoyuerMessage(QString _message, CompteClient *_client);
+    void EnvoyerMessage(QString _message, CompteClient *_client);
 private slots:
     void onServeurBanque_newConnection();
     void onCompteClient_disconnected();
