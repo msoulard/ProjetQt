@@ -5,6 +5,7 @@
 #include <QList>
 #include <QMessageBox>
 #include <QDebug>
+#include <QBuffer>
 #include "compteclient.h"
 
 class ServeurBanque : public QTcpServer
