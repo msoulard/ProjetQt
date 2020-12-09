@@ -82,7 +82,19 @@ typePalier *Experience::ObtenirCarateristiquesPaliers()
 
 void Experience::LireMesuresBrutes(QString &_nomFichier)
 {
-    // à completer dans le TD2
+    QFile fichierMesures(_nomFichier);
+    if(!fichierMesures.open(QIODevice::ReadOnly)){
+        qDebug() << fichierMesures.errorString();
+    }
+    else{
+        //association du fichier à un flux
+        QDataStream in(&fichierMesures);
+
+        //lire chaque valeur du fichier jusqu'à la fin
+        while(!in.atEnd()){
+
+        }
+    }
 }
 
 void Experience::InitiliserCourbes()

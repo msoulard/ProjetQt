@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QList>
 #include <QPointF>
+#include <QDebug>
 #include "constante.h"
 #include "pointdecourbe.h"
 

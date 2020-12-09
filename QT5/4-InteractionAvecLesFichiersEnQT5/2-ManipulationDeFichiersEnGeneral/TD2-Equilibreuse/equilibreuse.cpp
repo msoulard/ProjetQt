@@ -50,8 +50,8 @@ void Equilibreuse::on_actionImporter_mesures_brutes_triggered()
     experience = new Experience(this);
 
     QString leFichier;
-
-    // ouverture de la boite de dialogue TD2
+    //ouverture de la boite de dialogue
+    leFichier = QFileDialog::getOpenFileName(this, tr("Charger un fichier équilibrage brut"), "/home/USERS/ELEVES/SNIR2019/msoulard/ProjetQt/QT5/4-InteractionAvecLesFichiersEnQT5/2-ManipulationDeFichiersEnGeneral/TD2-Equilibreuse/data set", tr("Fichiers (*.mbr)"));
 
     if (!leFichier.isEmpty())
     {
@@ -63,7 +63,6 @@ void Equilibreuse::on_actionImporter_mesures_brutes_triggered()
 
         ChangerEtatSysteme(RESTITUTION);
     }
-
 }
 
 void Equilibreuse::ChangerEtatSysteme(Equilibreuse::ETAT_SYSTEME etat)
