@@ -38,7 +38,7 @@ void BDDWidget::on_pushButton_ConnexionBDD_clicked()
 
 void BDDWidget::on_pushButton_InfosComptes_clicked()
 {
-    //Remplir la liste des régions
+    //Remplir le tableau
     QSqlQuery requete("select * from comptes;" );
     if (!requete.exec()){
         qDebug()<<"pb requete "<<requete.lastError();
