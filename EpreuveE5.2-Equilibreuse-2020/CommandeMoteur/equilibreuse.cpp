@@ -12,6 +12,7 @@ Equilibreuse::Equilibreuse(QWidget *parent)
     leMoteur = new Moteur(laCarte, 0);
     connect(leCapot, &Capot::EtatCapotChange, this, &Equilibreuse::onCapot_EtatCapotChange);
     ui->statusbar->addPermanentWidget(&labelEtatCapot);
+    indiceTempo = 1;
 }
 
 Equilibreuse::~Equilibreuse()
@@ -43,18 +44,39 @@ void Equilibreuse::on_pushButton_Lancer_clicked()
 {
     QString message;
     message = ui->pushButton_Lancer->text();
+    int valeurConsigne = ui->lcdNumber_Consigne->value();
     if(message == "Lancer moteur"){
         ui->pushButton_Lancer->setText("Fixer consigne");
+        if(valeurConsigne >= 70){
+            connect(&tempo, &QTimer::timeout, this, &Equilibreuse::onTimer_timeout);
+            tempo.start(500);
+        }
+        else{
+            leMoteur->FixerConsigneVitesse(valeurConsigne);
+        }
     }
     else{
-        ui->pushButton_Lancer->setText("Lancer moteur");
+        leMoteur->FixerConsigneVitesse(valeurConsigne);
     }
-    int valeurConsigne = ui->lcdNumber_Consigne->value();
-    leMoteur->FixerConsigneVitesse(valeurConsigne);
 }
 
 void Equilibreuse::on_pushButton_Arreter_clicked()
 {
     ui->pushButton_Lancer->setText("Lancer moteur");
     leMoteur->FixerConsigneVitesse(0);
+}
+
+void Equilibreuse::onTimer_timeout()
+{
+    int valeurConsigne = ui->lcdNumber_Consigne->value();
+    if(valeurConsigne > (valeurConsigne/4)*indiceTempo){
+        leMoteur->FixerConsigneVitesse(valeurConsigne/4*indiceTempo);
+        indiceTempo ++;
+    }
+    else{
+        leMoteur->FixerConsigneVitesse(valeurConsigne);
+        indiceTempo = 1;
+        tempo.stop();
+    }
+
 }

@@ -9,6 +9,14 @@ CreationClient_Dialog::CreationClient_Dialog(QStringList &_agences, QWidget *par
     while(!_agences.isEmpty()){
         ui->comboBox_VilleAgence->addItem(_agences.takeAt(0));
     }
+    QRegExp exp("[a-zA-Z -]{1,100}");
+    QRegExpValidator *val = new QRegExpValidator(exp, this);
+    ui->lineEdit_Nom->setValidator(val);
+    ui->lineEdit_Prenom->setValidator(val);
+    ui->lineEdit_VilleOrigine->setValidator(val);
+    QRegExp expChiffre("[0-9,.]{1,1000}");
+    QRegExpValidator *valChiffre = new QRegExpValidator(expChiffre, this);
+    ui->lineEdit_Solde->setValidator(valChiffre);
 }
 
 CreationClient_Dialog::~CreationClient_Dialog()

@@ -89,11 +89,14 @@ void Experience::LireMesuresBrutes(QString &_nomFichier)
     else{
         //association du fichier à un flux
         QDataStream in(&fichierMesures);
-
+        int i = 0;
+        in >> nbEchantillons >> vitesse >> origine;
+        mesuresBrutes = new double[nbEchantillons];
         //lire chaque valeur du fichier jusqu'à la fin
         while(!in.atEnd()){
-
+            in >> mesuresBrutes[i++];
         }
+        fichierMesures.close();
     }
 }
 

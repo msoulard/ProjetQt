@@ -25,6 +25,7 @@ void Widget::onQWebSocketServer_newConnection()
 {
     client = sock->nextPendingConnection();
     connect(client, &QWebSocket::textMessageReceived, this, &Widget::onQWebSocket_textMessageReceived);
+    qDebug() << "un clien est connecté";
 }
 
 void Widget::onQWebSocket_textMessageReceived(QString _message)

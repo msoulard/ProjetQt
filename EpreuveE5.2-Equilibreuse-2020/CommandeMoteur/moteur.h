@@ -1,6 +1,7 @@
 #ifndef MOTEUR_H
 #define MOTEUR_H
 
+#include <QTimer>
 #include "mcculdaq.h"
 
 class Moteur
@@ -13,7 +14,6 @@ private:
     MccUldaq &laCarte;
     int numCanal;
     double tensionMaxCommande;
-
 };
 
 

@@ -5,6 +5,7 @@
 #include <QList>
 #include <QPointF>
 #include <QDebug>
+#include <QTextStream>
 #include "constante.h"
 #include "pointdecourbe.h"
 

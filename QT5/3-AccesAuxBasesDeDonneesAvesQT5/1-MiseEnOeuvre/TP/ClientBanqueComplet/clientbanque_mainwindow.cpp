@@ -14,6 +14,9 @@ clientBanque_MainWindow::clientBanque_MainWindow(QWidget *parent)
     connect(socketClientBanque, &QAbstractSocket::disconnected, this, &clientBanque_MainWindow::onQTcpSocket_disconnected);
     connect(socketClientBanque, QOverload<QAbstractSocket::SocketError>::of(&QAbstractSocket::error), this, &clientBanque_MainWindow::onQTcpSocket_error);
     connect(socketClientBanque, &QAbstractSocket::readyRead, this, &clientBanque_MainWindow::onQTcpSocket_readyRead);
+    QRegExp expChiffre("[0-9,.]{1,1000}");
+    QRegExpValidator *valChiffre = new QRegExpValidator(expChiffre, this);
+    ui->lineEdit_NumCompte->setValidator(valChiffre);
 }
 
 clientBanque_MainWindow::~clientBanque_MainWindow()
