@@ -111,7 +111,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Vitesse du moteur en tours par minutes</string>
+      <string>Vitesse du moteur en tours par minute</string>
      </property>
     </widget>
    </widget>

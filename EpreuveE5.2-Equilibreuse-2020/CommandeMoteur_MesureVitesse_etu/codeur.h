@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QDebug>
 #include "mcculdaq.h"
 
 class Codeur : public QObject

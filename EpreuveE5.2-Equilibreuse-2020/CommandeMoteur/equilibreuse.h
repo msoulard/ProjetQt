@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QTimer>
+#include <QDebug>
 #include "capot.h"
 #include "mcculdaq.h"
 #include "moteur.h"

@@ -49,14 +49,18 @@ void Equilibreuse::on_pushButton_Lancer_clicked()
         ui->pushButton_Lancer->setText("Fixer consigne");
         if(valeurConsigne >= 70){
             connect(&tempo, &QTimer::timeout, this, &Equilibreuse::onTimer_timeout);
-            tempo.start(500);
+            tempo.start(1000);
+            indiceTempo = 1;
+            qDebug() << valeurConsigne;
         }
         else{
             leMoteur->FixerConsigneVitesse(valeurConsigne);
+            qDebug() << valeurConsigne;
         }
     }
     else{
         leMoteur->FixerConsigneVitesse(valeurConsigne);
+        qDebug() << valeurConsigne;
     }
 }
 
@@ -69,14 +73,17 @@ void Equilibreuse::on_pushButton_Arreter_clicked()
 void Equilibreuse::onTimer_timeout()
 {
     int valeurConsigne = ui->lcdNumber_Consigne->value();
-    if(valeurConsigne > (valeurConsigne/4)*indiceTempo){
-        leMoteur->FixerConsigneVitesse(valeurConsigne/4*indiceTempo);
+    if(valeurConsigne > (valeurConsigne/4.0)*indiceTempo){
+        leMoteur->FixerConsigneVitesse(valeurConsigne/4.0*indiceTempo);
+        qDebug() << "Tempo start " << valeurConsigne/4.0*indiceTempo;
         indiceTempo ++;
     }
     else{
         leMoteur->FixerConsigneVitesse(valeurConsigne);
-        indiceTempo = 1;
+        qDebug() << "Tempo stop " << valeurConsigne;
+        //indiceTempo = 1;
         tempo.stop();
+        disconnect(&tempo, &QTimer::timeout, this, &Equilibreuse::onTimer_timeout);
     }
 
 }

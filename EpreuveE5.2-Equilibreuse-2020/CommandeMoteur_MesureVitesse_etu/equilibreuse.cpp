@@ -51,6 +51,11 @@ void Equilibreuse::onCapot_EtatCapotChange(bool _etat)
     }
 }
 
+void Equilibreuse::onCodeur_VitesseChange(int _vitesse)
+{
+    ui->lcdNumber_vitesse->display(_vitesse);
+}
+
 void Equilibreuse::on_pushButton_Lancer_clicked()
 {
     if(ui->pushButton_Lancer->text()=="Lancer Moteur")
@@ -58,13 +63,14 @@ void Equilibreuse::on_pushButton_Lancer_clicked()
         ui->pushButton_Lancer->setText("Fixer consigne");
     }
     leMoteur->FixerConsigneVitesse(ui->dial_ConsigneVItesse->value());
+    leCodeur->LancerMesure();
 }
 
 void Equilibreuse::on_pushButton_Arreter_clicked()
 {
-       ui->pushButton_Lancer->setText("Lancer Moteur");
-       leMoteur->FixerConsigneVitesse(0);
-       ui->dial_ConsigneVItesse->setValue(0);
+    ui->pushButton_Lancer->setText("Lancer Moteur");
+    leMoteur->FixerConsigneVitesse(0);
+    ui->dial_ConsigneVItesse->setValue(0);
+    leCodeur->ArreterMesureVitesse();
+    ui->lcdNumber_vitesse->display(0);
 }
-
-

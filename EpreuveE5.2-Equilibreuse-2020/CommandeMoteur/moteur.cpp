@@ -8,14 +8,19 @@ Moteur::Moteur(MccUldaq &_laCarte, const int _numCanal, const double _tensionMax
 {
     UlError erreur;
     erreur = laCarte.ulAOut(numCanal, 0);
-    qDebug() << "Code erreur MccUldaq création : " << erreur ;
+    if (erreur != ERR_NO_ERROR){
+      qDebug() << "Code erreur MccUldaq création : " << erreur ;
+    }
 }
 
 Moteur::~Moteur()
 {
     UlError erreur;
     erreur = laCarte.ulAOut(numCanal,0);
-    qDebug() << "Code erreur MccUldaq destruction : " << erreur ;
+    if (erreur != ERR_NO_ERROR){
+        qDebug() << "Code erreur MccUldaq destruction : " << erreur ;
+    }
+
 }
 
 void Moteur::FixerConsigneVitesse(const int _pourcentage)
@@ -23,6 +28,8 @@ void Moteur::FixerConsigneVitesse(const int _pourcentage)
     double valeurTension = tensionMaxCommande * _pourcentage / 100.0 ;
     UlError erreur;
     erreur = laCarte.ulAOut(numCanal,valeurTension);
-    qDebug() << "Code erreur MccUldaq fixer consigne : " << erreur ;
+    if (erreur != ERR_NO_ERROR){
+        qDebug() << "Code erreur MccUldaq fixer consigne : " << erreur ;
+    }
 }
 
